@@ -51,6 +51,18 @@ pipeline{
                 '''
             }
         }
+        
+        stage('Docker Cleanup') {
+        steps {
+            echo 'Cleaning unused Docker images and build cache'
+
+            sh '''
+                docker image prune -f
+                docker builder prune -f
+            '''
+        }
+    }
+
     }
 
     post {
