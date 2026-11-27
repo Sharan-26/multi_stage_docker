@@ -13,7 +13,7 @@ pipeline{
                 echo ' Building Multi-Stage Docker Image'
 
                 sh '''
-                    docker built -t $DOCKER_IMAGE:$DOCKER-TAG .
+                    docker build -t ${DOCKER_IMAGE}:${DOCKER-TAG} .
                 '''
 
             }
@@ -24,7 +24,7 @@ pipeline{
                 echo ' Testing Docker Image'
 
                 sh '''
-                    docker run --rm $DOCKER_IMAGE:$DOCKER_TAG
+                    docker run --rm ${DOCKER_IMAGE}:${DOCKER_TAG}
                 '''
             }
         }
@@ -47,7 +47,7 @@ pipeline{
         stage('Push to Docker Hub') {
             steps {
                 sh '''
-                    docker push $DOCKER_IMAGE:$DOCKER_TAG
+                    docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
                 '''
             }
         }
