@@ -13,7 +13,7 @@ pipeline{
                 echo ' Building Multi-Stage Docker Image'
 
                 sh '''
-                    docker build -t ${DOCKER_IMAGE}:${DOCKER-TAG} .
+                    docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
                 '''
 
             }
